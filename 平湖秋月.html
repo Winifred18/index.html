@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>景点介绍之平湖秋月</title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+		@font-face {
+			font-family:"title";
+			src: url("css/beibanchuanyouranti.ttf");
+			
+		}
+		@font-face {
+			font-family:"text";
+			src: url("css/hanyiokaij.ttf");
+			
+		}
+		html, body {
+			
+		    height: 100vh;
+		    width: 100vw;
+		    overflow: hidden;
+		    margin: 0;
+		    padding: 0;
+			background-image: url("img/背景.jpg");
+		}
+      *,body{
+	    
+	    padding:0;
+      	margin:0px;
+      }
+	 
+      #title{
+		  
+          width: 120px;
+          height: 38px;
+          line-height: 38px;
+          text-align: center;
+          border:1px solid #ddd;
+          font-size: 14px;
+          cursor: pointer;
+		  position: relative;
+		  z-index: 1;
+      }
+      /* 列表样式 */
+      #list{
+          width: 120px;
+          list-style: none;
+          border:1px solid #ddd;
+          display: none;
+          border-radius:4px;
+          position: absolute;
+		  z-index: 10;
+      }
+      
+      #list li{
+          width: 100%;
+          height: 30px;
+          line-height: 30px;
+          text-align: center;
+          font-size: 14px;
+          border-bottom:1px solid #ddd;
+      }
+	  .dropdown-content a {
+	      color: black;
+	      padding: 12px 16px;
+	      text-decoration: none;
+	      display: block;
+	  }
+	  .dropdown-content a:hover {
+	      background-color: #f1f1f1;
+	  }
+	  .dropdown:hover .dropdown-content {
+	      display: block;
+	  }
+	  
+
+	  .title-above-box {
+		          font-family: "title";
+	              text-align: center; 
+	              margin-bottom: 0px; /* 控制标题与.box之间的间距 */
+	              font-size: 50px; 
+	              font-weight: bold; 
+	              position: relative; 
+	              z-index: 5; 
+	          }
+
+      button {
+          position: fixed; /* 固定定位 */
+          right: 20px; /* 距离右侧20px */
+          bottom: 20px; /* 距离底部20px */
+          z-index: 100; 
+      }
+	  
+	  .container {
+	      display: flex;
+	      justify-content: center;
+	      align-items: center;
+	      width: 90%;
+	      height: 100%;
+		  position: absolute;
+		  margin-left: 100px;
+		  margin-top: -80px;
+		  
+	  }
+	  
+
+	  .box {
+	      display: flex;
+	      border: 1px solid #ccc;
+	      padding: 20px;
+	      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	      width: 1000px; /* 可以根据需要调整宽度 */
+	      /*height: 80%;*/
+	      background-color: #f9f9f9;
+	  }
+	  
+	  .left-section {
+	      flex: 1; /* 占据一定的空间，可以根据需要调整 */
+	  	display: flex;
+	      /*text-align: center;*/
+	  	align-items: center;
+	  	justify-content: center;
+	      padding-right: 20px; /* 给右侧留出一些空间 */
+	      border-right: 1px solid #ccc; /* 可选的，添加右侧分割线 */
+	  }
+	  
+	  .left-section img{
+	      max-width: 100%;
+	      height: auto;
+	  }
+	  
+	  .right-section {
+	      flex: 2; /* 占据更多的空间，可以根据需要调整 */
+	      display: flex;
+	      flex-direction: column;
+	      justify-content: center;
+	      align-items: flex-start; /* 或者使用 'center' 则右侧内容也居中 */
+	  	position: relative;
+	  }
+	  
+	  .text-section {
+	      width: 100%;
+	      /*margin-bottom: 10px;*/ /* 控制文字与语音条之间的间距 */
+	  	position: absolute;
+	  	top: 0;
+	  }
+	  
+	  .audio-section {
+	  	width: 100%;
+	  	position: absolute;
+	  	bottom: 0;
+	  }
+	  hr {
+	      border: 0;
+	      height: 1px;
+	      background-color: #ccc;
+	      width: 100%; /* 分割线宽度 */
+	      margin: 0 0 10px; /* 控制分割线与内容的间距 */
+	  	position: absolute;
+	  	bottom: 55px;
+	  }
+	  
+	  .audio-section audio {
+	      width: 100%; /* 或者设置一个固定的宽度，如果你不希望音频控件占满整个宽度 */
+	  }
+	  
+	  /* 樱花样式 */
+	  .sakura {
+	      position: absolute;
+	      top: -50px; 
+	      left: 50%; 
+	      width: 30px;
+	      height: 30px;
+	      background: url("img/未标题-1.png") no-repeat center center; /* 使用樱花图片 */
+	      background-size: cover;
+	      opacity: 0.8;/*樱花透明度*/
+	      transform: translateX(-50%); 
+	      animation: fall 5s linear infinite; /* 动画效果 */
+		  z-index: 10;
+	  }
+	  
+	  /* 樱花飘落动画 */
+      @keyframes fall {
+            to {
+                /*transform: translateY(100vh) rotate(360deg);
+                opacity: 0;*/
+				transform: translateY(100vh) translateX(-50%) scale(0.5) rotate(360deg); // 添加缩放效果
+				opacity: 0;
+            }
+        }
+      
+    </style>
+    <script type="text/javascript">
+      function show(){
+        document.getElementById("list").style.display="block";
+        document.getElementById("title").style.color="red";
+      }
+      function hide(){
+        document.getElementById("list").style.display="none";
+        document.getElementById("title").style.color="";
+      }
+	  // 当文档加载完成时执行此函数
+	          window.onload = function() {
+	              // 获取按钮元素
+	              const button = document.getElementById('myButton');
+	   
+	              // 添加点击事件监听器
+	              button.addEventListener('click', function() {
+	                  // 跳转到指定页面
+	                  window.location.href = '花港观鱼.html';
+	              });
+	          };
+	  
+	  
+    </script>
+  </head>
+  <body>
+	<script>
+	    // 动态生成樱花
+	    for (let i = 0; i < 50; i++) {
+	        let sakura = document.createElement('div');
+	        sakura.className = 'sakura';
+	        sakura.style.top = Math.random() * 100 + 'vh';
+	        sakura.style.left = Math.random() * 100 + 'vw';
+	        sakura.style.animationDuration = Math.random() * 5 + 3 + 's'; // 随机动画时长
+	        sakura.style.animationDelay = Math.random() * 5 + 's'; // 随机动画延迟
+	        document.body.appendChild(sakura);
+	    }
+	</script>
+	<!--<div class="title-above-container">西湖景点介绍</div>-->
+    <p id="title" onmouseover="show()" onmouseout="hide()">景点名</p>
+    <ul id="list" onmouseover="show()" onmouseout="hide()" class = "dropdown-content">
+        <li>日照灵隐</li>
+        <li>断桥残雪</li>
+        <li>苏堤春晓</li>
+		<li>花港观鱼</li>
+    </ul>
+	<div class="title-above-box">平湖秋月</div>
+	<button id="myButton" style="width: 150px; height: 30px;">下一站</button>
+	<div class="container">
+	        <div class="box">
+	            <div class="left-section">
+						<img src="img/平湖秋月.jpg" alt="图片">
+	
+	            </div>
+	            <div class="right-section">
+	                <div class="text-section">
+	                    <p style="font-family: 'text';font-size: 20px;" ><br><br><br>&emsp;&emsp;‌平湖秋月是杭州西湖的标志性景点之一，以其秋夜月光与湖水交相辉映的美景而闻名‌。它位于白堤西端，背靠孤山，面朝外湖，占地面积虽小，却承载着深厚的文化底蕴和无限的诗意与浪漫‌。每当秋高气爽，皓月当空之时，月光洒在波光粼粼的湖面上，整个世界仿佛都被银色的光辉笼罩，美不胜收‌。景区内的亭台楼阁、曲桥蜿蜒，颇具园林意趣，是文人墨客吟诗作画的灵感源泉‌。平湖秋月的历史可以追溯到南宋时期，但当时并未有固定的景址。直到清康熙年间，康熙皇帝巡游西湖时，亲自品题了“平湖秋月”这一景观，从此这个景点便有了它固定的位置，并成为了西湖十景之一‌。
+如今，平湖秋月不仅是游客们赏景的绝佳去处，更是承载着杭州历史文化的重要载体，吸引着无数游客前来探寻其秋日风情‌。
+</p>
+	                </div>
+	                <hr> <!-- 分割线 -->
+	                <div class="audio-section">
+	                    <audio src="" controls></audio>
+	                </div>
+	            </div>
+	        </div>
+			
+	    </div>
+	
+  </body>
+</html>
